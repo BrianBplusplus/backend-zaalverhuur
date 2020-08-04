@@ -17,18 +17,17 @@ router.get("/test", async (request, response, next) => {
 router.get("/api", async (request, response, next) => {
   try {
     const params = {
-      consumer: process.env.CLIENT_ID,
-      Externalid: process.env.CLIENT_SECRET,
+      headers: {
+        client_id: process.env.CLIENT_ID,
+        client_secret: process.env.CLIENT_SECRET,
+      },
     };
 
     console.log(params);
 
     const apiResponse = await axios.post(
-      `https://api.trs-suite.com:443//hosting/login/oauth/`,
-      {
-        consumer: process.env.CLIENT_SECRET,
-        Externalid: process.env.CLIENT_SECRET,
-      }
+      `https://api.trs-suite.com:443//hosting/login/oauth`,
+      params
     );
     response.json(apiResponse);
   } catch (error) {
