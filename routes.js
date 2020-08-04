@@ -1,17 +1,40 @@
-const { Router } = require("express")
+const { Router } = require("express");
+const axios = require("axios");
 
 const router = new Router();
 
 router.get("/test", async (request, response, next) => {
-    try {
-        const testMessage = "test message has been received"; 
-        console.log("test route has been accessed");
+  try {
+    const testMessage = "test message has been received";
+    console.log("test route has been accessed");
 
-        return response.json(testMessage)
-    }
-    catch (error) {
-        return next(error)
-    }
-})
+    return response.json(testMessage);
+  } catch (error) {
+    return next(error);
+  }
+});
 
-module.exports = router
+router.get("/api", async (request, response, next) => {
+  try {
+    const params = {
+      consumer: process.env.CLIENT_ID,
+      Externalid: process.env.CLIENT_SECRET,
+    };
+
+    console.log(params);
+
+    const apiResponse = await axios.post(
+      `https://api.trs-suite.com:443//hosting/login/oauth/`,
+      {
+        consumer: process.env.CLIENT_SECRET,
+        Externalid: process.env.CLIENT_SECRET,
+      }
+    );
+    response.json(apiResponse);
+  } catch (error) {
+    console.log(" -- error handler --");
+    return next(error);
+  }
+});
+
+module.exports = router;
