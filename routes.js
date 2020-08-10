@@ -3,13 +3,14 @@ const axios = require("axios");
 const qs = require("qs");
 
 const router = new Router();
+let accessToken = ""
 
-router.get("/test", async (request, response, next) => {
+// ----- Routes ------ //
+router.get("/", async (request, response, next) => {
   try {
-    const testMessage = "test message has been received";
-    console.log("test route has been accessed");
-
-    return response.json(testMessage);
+    const serverMessage = "😀 🕶 🐼 🐶";
+    console.log("Server is online")
+    return response.json(serverMessage);
   } catch (error) {
     return next(error);
   }
@@ -17,26 +18,54 @@ router.get("/test", async (request, response, next) => {
 
 router.get("/api", async (request, response, next) => {
   try {
-    return;
+    const todo = "Fetch all rooms"
+    console.log("TODO: fetch all rooms")
+    return response.json(todo)
   } catch (error) {
-    console.log(" -- error handler --");
     return next(error);
   }
 });
 
-const info = process.env.ENCRYPTED_INFO;
+router.get("/api/:id", async (request, response, next) => {
+  try {
+    const todo = "Fetch single room"
+    console.log("TODO: fetch single room" + " id : " + request.params.id)
+    return response.json(todo + " id : " + request.params.id)
+  } catch (error) {
+    return next(error)
+  }
+})
 
+// ----- Access token function triggers on server start ------ //
+const encryptedClientIdClientSecret = process.env.ENCRYPTED_INFO;
 const stringifiedData = qs.stringify({ grant_type: "client_credentials" });
 
-function HeaderPostAction() {
+const getAccessToken = async (request, response) => {
+  try {
+    const apiData = await axios({
+      method: "post",
+      url: "https://api.trs-suite.com:443//hosting/login/oauth",
+      data: stringifiedData,
+      headers: {
+        authorization: `Basic ${encryptedClientIdClientSecret}`,
+      },
+    })
+    console.log(apiData)
+  }
+  catch (error){
+    console.log("Post Error : " + error)
+        return (error)
+  }
+
+
+
+  /*
   axios({
     method: "post",
     url: "https://api.trs-suite.com:443//hosting/login/oauth",
-
-    //withCredentials: true,
     data: stringifiedData,
     headers: {
-      authorization: `Basic ${info}`,
+      authorization: `Basic ${encryptedClientIdClientSecret}`,
     },
   })
     .then(function (response) {
@@ -45,8 +74,10 @@ function HeaderPostAction() {
     .catch(function (error) {
       console.log("Post Error : " + error);
     });
+    */
 }
 
-HeaderPostAction();
+getAccessToken();
+
 
 module.exports = router;
