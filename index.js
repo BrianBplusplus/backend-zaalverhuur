@@ -15,7 +15,5 @@ app.use(routes);
 app.listen(process.env.PORT || port, () =>
   console.log(`
 // ---- denieuwebibliotheek Express app ---- //
-// ---- Listening on port ${port} ---- //`));
-
-
-
+// ---- Listening on port ${process.env.PORT || port} ---- //`)
+);
