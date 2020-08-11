@@ -10,8 +10,8 @@ let fetchSingleLocation = 0;
 // ----- Routes ------ //
 router.get("/", async (request, response, next) => {
   try {
-    const serverMessage = "😀 🕶 🐼 🐶";
-    console.log("Server is online");
+    const serverMessage = "😀 😆 🐼 // ---- Server is online ---- // 🐶 😴 🧙";
+    console.log("// ---- Server is online ---- //");
     return response.json(serverMessage);
   } catch (error) {
     return next(error);
@@ -49,7 +49,7 @@ router.get("/api/:id", async (request, response, next) => {
     console.log("// ---- Fetch single location accessed ---- //");
     fetchSingleLocation++;
     console.log(
-      `// ---- Fetch single location route has been accessed ${fetchSingleLocation} times`
+      `// ---- Fetch single location route has been accessed ${fetchSingleLocation} times ---- //`
     );
     return response.status(200).send(ovaticResponse.data);
   } catch (error) {
@@ -65,7 +65,7 @@ const getAccessToken = async (request, response) => {
   try {
     const apiData = await axios({
       method: "post",
-      url: "https://api.trs-suite.com:443//hosting/login/oauth",
+      url: process.env.AUTHENTICATION_URL,
       data: stringifiedData,
       headers: {
         authorization: `Basic ${encryptedClientIdClientSecret}`,
