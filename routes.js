@@ -46,12 +46,30 @@ router.get("/api/:id", async (request, response, next) => {
         },
       }
     );
+
+    const ovaticSeatplans = await axios.get(
+      process.env.EXTERNAL_URL_SEATPLANS,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          locationID: `${request.params.id}`
+        },
+      }
+    ); 
+
+
+    const combinedResponse = {
+      ...ovaticResponse.data,
+      ...ovaticSeatplans.data.seatplans
+    }
+
+
     console.log("// ---- Fetch single location accessed ---- //");
     fetchSingleLocation++;
     console.log(
       `// ---- Fetch single location route has been accessed ${fetchSingleLocation} times ---- //`
     );
-    return response.status(200).send(ovaticResponse.data);
+    return response.status(200).send(combinedResponse);
   } catch (error) {
     return next(error);
   }
