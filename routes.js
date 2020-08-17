@@ -20,7 +20,7 @@ router.get("/", async (request, response, next) => {
 
 router.get("/api", async (request, response, next) => {
   try {
-    const ovaticResponse = await axios.get(process.env.EXTERNAL_URL_LOCATIONS, {
+    const ovaticLocations = await axios.get(process.env.EXTERNAL_URL + "/locations/", {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
@@ -30,7 +30,7 @@ router.get("/api", async (request, response, next) => {
     console.log(
       `// ---- Fetch all locations route has been accessed ${fetchAllLocations} times ---- //`
     );
-    return response.status(200).send(ovaticResponse.data);
+    return response.status(200).send(ovaticLocations.data);
   } catch (error) {
     return next(error);
   }
@@ -38,8 +38,8 @@ router.get("/api", async (request, response, next) => {
 
 router.get("/api/:id", async (request, response, next) => {
   try {
-    const ovaticResponse = await axios.get(
-      process.env.EXTERNAL_URL_LOCATIONS + request.params.id,
+    const ovaticLocations = await axios.get(
+      process.env.EXTERNAL_URL + "/locations/" + request.params.id,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -48,7 +48,7 @@ router.get("/api/:id", async (request, response, next) => {
     );
 
     const ovaticSeatplans = await axios.get(
-      process.env.EXTERNAL_URL_SEATPLANS,
+      process.env.EXTERNAL_URL + "/seatplans/",
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -59,7 +59,7 @@ router.get("/api/:id", async (request, response, next) => {
 
 
     const combinedResponse = {
-      ...ovaticResponse.data,
+      ...ovaticLocations.data,
       ...ovaticSeatplans.data
     }
 
