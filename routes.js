@@ -30,7 +30,11 @@ router.get("/api", async (request, response, next) => {
     console.log(
       `// ---- Fetch all locations route has been accessed ${fetchAllLocations} times ---- //`
     );
-    return response.status(200).send(ovaticLocations.data);
+
+    //Filtering out all the excess locations. TODO: Find a better filter setup.
+    const filteredOvaticLocations = ovaticLocations.data.locations.filter(location => location.locationID <= 1371)
+
+    return response.status(200).send(filteredOvaticLocations);
   } catch (error) {
     return next(error);
   }
