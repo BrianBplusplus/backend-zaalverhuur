@@ -60,7 +60,7 @@ router.get("/api/:id", async (request, response, next) => {
 
     const combinedResponse = {
       ...ovaticResponse.data,
-      ...ovaticSeatplans.data.seatplans
+      ...ovaticSeatplans.data
     }
 
 
