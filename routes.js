@@ -1,23 +1,14 @@
 const { Router } = require("express");
 const axios = require("axios");
 const qs = require("qs");
-
+const path = require("path");
 const router = new Router();
+
 let accessToken = 0;
 let fetchAllLocations = 0;
 let fetchSingleLocation = 0;
 
 // ----- Routes ------ //
-router.get("/", async (request, response, next) => {
-  try {
-    const serverMessage = "😀 😆 🐼 // ---- Server is online ---- // 🐶 😴 🧙";
-    console.log("// ---- Server is online ---- //");
-    return response.json(serverMessage);
-  } catch (error) {
-    return next(error);
-  }
-});
-
 router.get("/api", async (request, response, next) => {
   try {
     const ovaticLocations = await axios.get(process.env.EXTERNAL_URL + "/locations/", {
@@ -32,7 +23,9 @@ router.get("/api", async (request, response, next) => {
     );
 
     //Filtering out all the excess locations. TODO: Find a better filter setup.
-    const filteredOvaticLocations = ovaticLocations.data.locations.filter(location => location.locationID <= 1371)
+    const filteredOvaticLocations = ovaticLocations.data.locations.filter(
+      (location) => location.locationID <= 1371
+    );
 
     return response.status(200).send(filteredOvaticLocations);
   } catch (error) {
@@ -51,22 +44,17 @@ router.get("/api/:id", async (request, response, next) => {
       }
     );
 
-    const ovaticSeatplans = await axios.get(
-      process.env.EXTERNAL_URL + "/seatplans/",
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          locationID: `${request.params.id}`
-        },
-      }
-    ); 
-
+    const ovaticSeatplans = await axios.get(process.env.EXTERNAL_URL + "/seatplans/", {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        locationID: `${request.params.id}`,
+      },
+    });
 
     const combinedResponse = {
       ...ovaticLocations.data,
-      ...ovaticSeatplans.data
-    }
-
+      ...ovaticSeatplans.data,
+    };
 
     console.log("// ---- Fetch single location accessed ---- //");
     fetchSingleLocation++;
@@ -77,6 +65,15 @@ router.get("/api/:id", async (request, response, next) => {
   } catch (error) {
     return next(error);
   }
+});
+
+// Redirect route if user refreshes a specific page
+router.get("/:id", function (req, res) {
+  res.sendFile(path.join(__dirname, "/build/index.html"), function (err) {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
 });
 
 // ----- Access token function triggers on server start ------ //
@@ -96,7 +93,7 @@ const getAccessToken = async (request, response) => {
     console.log("// ---- 200 Token fetch succes ---- //");
     accessToken = apiData.data.access_token;
   } catch (error) {
-    console.log("Post Error : " + error);
+    console.log("Token fetch error : " + error);
     return error;
   }
 };
