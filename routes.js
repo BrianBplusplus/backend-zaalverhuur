@@ -67,15 +67,6 @@ router.get("/api/:id", async (request, response, next) => {
   }
 });
 
-// Redirect route if user refreshes a specific page
-router.get("/:id", function (req, res) {
-  res.sendFile(path.join(__dirname, "/build/index.html"), function (err) {
-    if (err) {
-      res.status(500).send(err);
-    }
-  });
-});
-
 // ----- Access token function triggers on server start ------ //
 const encryptedClientIdClientSecret = process.env.ENCRYPTED_INFO;
 const stringifiedData = qs.stringify({ grant_type: "client_credentials" });

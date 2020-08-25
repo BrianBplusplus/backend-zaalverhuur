@@ -5,6 +5,10 @@ const port = 4000;
 const dotenv = require("dotenv");
 dotenv.config();
 
+const cors = require("cors");
+const corsMiddleware = cors();
+app.use(corsMiddleware);
+
 const routes = require("./routes");
 app.use(routes);
 
