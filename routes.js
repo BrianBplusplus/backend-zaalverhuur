@@ -67,6 +67,14 @@ router.get("/api/:id", async (request, response, next) => {
   }
 });
 
+router.post("/mail/pickedoptions", async (request, response, next) => {
+  try {
+    console.log(request.body);
+  } catch (error) {
+    return next(error);
+  }
+});
+
 // ----- Access token function triggers on server start ------ //
 const encryptedClientIdClientSecret = process.env.ENCRYPTED_INFO;
 const stringifiedData = qs.stringify({ grant_type: "client_credentials" });

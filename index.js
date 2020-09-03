@@ -9,13 +9,14 @@ const cors = require("cors");
 const corsMiddleware = cors();
 app.use(corsMiddleware);
 
+const bodyParser = require("body-parser");
+const parserMiddleware = bodyParser.json();
+app.use(parserMiddleware);
+
 const routes = require("./routes");
 app.use(routes);
 
 app.use(express.static(__dirname + "/build/"));
-
-const bodyParser = require("body-parser");
-app.use(bodyParser);
 
 app.listen(process.env.PORT || port, () =>
   console.log(`
