@@ -18,7 +18,6 @@ const parserMiddleware = bodyParser.json();
 app.use(parserMiddleware);
 
 const routes = require("./routes");
-const { request } = require("express");
 app.use(routes);
 
 app.use(express.static(__dirname + "/build/"));
