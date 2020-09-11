@@ -6,6 +6,9 @@ const port = 4000;
 const dotenv = require("dotenv");
 dotenv.config();
 
+const helmet = require("helmet");
+app.use(helmet());
+
 const cors = require("cors");
 const corsMiddleware = cors();
 app.use(corsMiddleware);
@@ -15,6 +18,7 @@ const parserMiddleware = bodyParser.json();
 app.use(parserMiddleware);
 
 const routes = require("./routes");
+const { request } = require("express");
 app.use(routes);
 
 app.use(express.static(__dirname + "/build/"));
