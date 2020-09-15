@@ -6,12 +6,12 @@ const port = 4000;
 const dotenv = require("dotenv");
 dotenv.config();
 
-const helmet = require("helmet");
-app.use(helmet());
-
 const cors = require("cors");
 const corsMiddleware = cors();
 app.use(corsMiddleware);
+
+const helmet = require("helmet");
+app.use(helmet());
 
 const bodyParser = require("body-parser");
 const parserMiddleware = bodyParser.json();

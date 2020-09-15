@@ -1,29 +1,30 @@
 {
   "files": {
-    "main.css": "/static/css/main.74d63d5e.chunk.css",
-    "main.js": "/static/js/main.b3ced8d4.chunk.js",
-    "main.js.map": "/static/js/main.b3ced8d4.chunk.js.map",
+    "main.css": "/static/css/main.daa4aa60.chunk.css",
+    "main.js": "/static/js/main.5caf766d.chunk.js",
+    "main.js.map": "/static/js/main.5caf766d.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.ceffc9ef.js",
     "runtime-main.js.map": "/static/js/runtime-main.ceffc9ef.js.map",
-    "static/js/2.0941fc01.chunk.js": "/static/js/2.0941fc01.chunk.js",
-    "static/js/2.0941fc01.chunk.js.map": "/static/js/2.0941fc01.chunk.js.map",
+    "static/js/2.a8ca0d46.chunk.js": "/static/js/2.a8ca0d46.chunk.js",
+    "static/js/2.a8ca0d46.chunk.js.map": "/static/js/2.a8ca0d46.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.55486c41d1359cc1c874caef1c265dd3.js": "/precache-manifest.55486c41d1359cc1c874caef1c265dd3.js",
+    "precache-manifest.357559d3f4889cf1a35eddc64e8add83.js": "/precache-manifest.357559d3f4889cf1a35eddc64e8add83.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.74d63d5e.chunk.css.map": "/static/css/main.74d63d5e.chunk.css.map",
-    "static/js/2.0941fc01.chunk.js.LICENSE.txt": "/static/js/2.0941fc01.chunk.js.LICENSE.txt",
+    "static/css/main.daa4aa60.chunk.css.map": "/static/css/main.daa4aa60.chunk.css.map",
+    "static/js/2.a8ca0d46.chunk.js.LICENSE.txt": "/static/js/2.a8ca0d46.chunk.js.LICENSE.txt",
     "static/media/HeaderImage.webp": "/static/media/HeaderImage.f9b627a2.webp",
     "static/media/deNieuweKamer.webp": "/static/media/deNieuweKamer.6a6149f2.webp",
     "static/media/deNieuweZaal.webp": "/static/media/deNieuweZaal.cd597363.webp",
     "static/media/hetNieuweLokaal.webp": "/static/media/hetNieuweLokaal.3e38d27a.webp",
     "static/media/hetNieuweLokaalMetSubZaal.webp": "/static/media/hetNieuweLokaalMetSubZaal.af38e661.webp",
     "static/media/hetNieuweLokaalMetTweeSubZalen.webp": "/static/media/hetNieuweLokaalMetTweeSubZalen.d74b0fb7.webp",
-    "static/media/hetNieuwsCafe.webp": "/static/media/hetNieuwsCafe.a14b3490.webp"
+    "static/media/hetNieuwsCafe.webp": "/static/media/hetNieuwsCafe.a14b3490.webp",
+    "static/media/zoomIcon.svg": "/static/media/zoomIcon.7151533d.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.ceffc9ef.js",
-    "static/js/2.0941fc01.chunk.js",
-    "static/css/main.74d63d5e.chunk.css",
-    "static/js/main.b3ced8d4.chunk.js"
+    "static/js/2.a8ca0d46.chunk.js",
+    "static/css/main.daa4aa60.chunk.css",
+    "static/js/main.5caf766d.chunk.js"
   ]
 }
