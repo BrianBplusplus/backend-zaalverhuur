@@ -6,9 +6,9 @@ const port = 4000;
 const dotenv = require("dotenv");
 dotenv.config();
 
-const cors = require("cors");
-const corsMiddleware = cors();
-app.use(corsMiddleware);
+//const cors = require("cors");
+//const corsMiddleware = cors();
+//app.use(corsMiddleware);
 
 const helmet = require("helmet");
 app.use(helmet());
