@@ -9,7 +9,6 @@ let fetchAllLocations = 0;
 let fetchSingleLocation = 0;
 
 // ----- Routes ------ //
-
 router.get("/api", async (request, response, next) => {
   try {
     const ovaticLocations = await axios.get(process.env.EXTERNAL_URL + "/locations/", {
