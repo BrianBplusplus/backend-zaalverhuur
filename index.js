@@ -18,6 +18,7 @@ const routes = require("./routes");
 app.use(routes);
 
 app.use(express.static(__dirname + "/build/"));
+app.use("*", express.static(__dirname + "/build"));
 
 app.listen(process.env.PORT || port, () =>
   console.log(`
