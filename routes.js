@@ -67,13 +67,13 @@ router.get("/api/:id", async (request, response, next) => {
   }
 });
 
-router.post("/mail/pickedoptions", async (request, response, next) => {
-  try {
-    console.log(request.body);
-  } catch (error) {
-    return next(error);
-  }
+router.get("/test/visitors", (request, response, next) => {
+  const combined = { fetchSingleLocation, fetchAllLocations };
+  console.log("// ---- Visitor count accessed ---- //");
+  return response.status(200).send(combined);
 });
+
+router.post("/mail/pickedoptions", async (request, response, next) => {});
 
 // ----- Access token function triggers on server start ------ //
 const encryptedClientIdClientSecret = process.env.ENCRYPTED_INFO;
