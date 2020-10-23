@@ -73,8 +73,6 @@ router.get("/test/visitors", (request, response, next) => {
   return response.status(200).send(combined);
 });
 
-router.post("/mail/pickedoptions", async (request, response, next) => {});
-
 // ----- Access token function triggers on server start ------ //
 const encryptedClientIdClientSecret = process.env.ENCRYPTED_INFO;
 const stringifiedData = qs.stringify({ grant_type: "client_credentials" });
