@@ -17,9 +17,6 @@ app.use(parserMiddleware);
 const routes = require("./routes");
 app.use(routes);
 
-const mailer = require("./mailer")
-app.use(mailer)
-
 app.use(express.static(__dirname + "/build/"));
 app.use("*", express.static(__dirname + "/build"));
 
