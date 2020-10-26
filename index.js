@@ -14,6 +14,9 @@ const bodyParser = require("body-parser");
 const parserMiddleware = bodyParser.json();
 app.use(parserMiddleware);
 
+const mailer = require("./mailer")
+app.use(mailer);
+
 const routes = require("./routes");
 app.use(routes);
 
