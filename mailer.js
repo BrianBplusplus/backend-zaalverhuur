@@ -1,11 +1,13 @@
 const { Router } = require("express");
 const nodemailer = require("nodemailer")
+
 const axios = require("axios");
 const router = new Router();
 
 const transporter = nodemailer.createTransport({
   port: process.env.EMAIL_PORT,
   host: process.env.EMAIL_HOST,
+  secureConnection: false,
   secure: false,
     auth: {
       user: process.env.EMAIL_USERNAME,
@@ -19,7 +21,7 @@ const transporter = nodemailer.createTransport({
 router.post("/action/sendemail", (request, response) => {
 
   const {to, subject, text} = request.body
-  console.log("request body", to, subject, text)
+ // console.log("request body", request.body)
 
   const mailData = {
     from: process.env.EMAIL_USERNAME,
