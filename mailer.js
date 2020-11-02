@@ -21,18 +21,47 @@ const transporter = nodemailer.createTransport({
 router.post("/action/sendemail", (request, response) => {
 
   const {inputFormName, inputFormLastName, inputFormEmail, inputformCompany, additionalInformationDayPart, additionalInformationCatering, 
-    additionalInformationTextField, additionalInformationAmountOfPersons } = request.body
+    additionalInformationTextField, additionalInformationAmountOfPersons, pickedDate } = request.body
+  const roomName = request.body.apiData.name
+
   console.log("request body", request.body)
 
   const mailData = {
     from: process.env.EMAIL_USERNAME,
     to: inputFormEmail,
-    subject: "subject",
-    text: "test text",
-    html: "<b> Test </b> <br> <b> Message sent with nodemailer </b>"
+    subject: "Reservering zaal",
+    text: "Bedankt voor het reserveren van de zaal, u ontvangt spoedig een op maat gemaakte offerte",
+    html: "<b> Zaal verhuur </b> <br> <b> Bedankt voor het reserveren van de zaal, u ontvangt spoedig een op maat gemaakte offerte</b>"
   }
 
+  const mailDataInternal = {
+    from: process.env.EMAIL_USERNAME,
+    to: "reserveringen@denieuwebibliotheek.nl",
+    subject: "Reservering zaal",
+    text: `Nieuwe zaalreservering
+    Zaal: ${roomName}
+    Datum: ${pickedDate}
+    
+    Naam: ${inputFormName} ${inputFormLastName}
+    Mail: ${inputFormEmail}
+    Bedrijf: ${inputformCompany}
+
+    Aanvullende informatie
+    Dagdeel: ${additionalInformationDayPart}
+    Catering: ${additionalInformationCatering}
+    Aantal personen: ${additionalInformationAmountOfPersons}
+    Extra informatie: ${additionalInformationTextField}
+    `
+  }
+  
   transporter.sendMail(mailData, function (error, info) {
+    if(error) {
+      return console.log(error)
+    }
+     response.status(200).send({ message: "Mail sent", message_id: info.messageId})
+  });
+
+  transporter.sendMail(mailDataInternal, function (error, info) {
     if(error) {
       return console.log(error)
     }
