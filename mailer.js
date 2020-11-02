@@ -20,12 +20,13 @@ const transporter = nodemailer.createTransport({
 
 router.post("/action/sendemail", (request, response) => {
 
-  const {to, subject, text} = request.body
- // console.log("request body", request.body)
+  const {inputFormName, inputFormLastName, inputFormEmail, inputformCompany, additionalInformationDayPart, additionalInformationCatering, 
+    additionalInformationTextField, additionalInformationAmountOfPersons } = request.body
+  console.log("request body", request.body)
 
   const mailData = {
     from: process.env.EMAIL_USERNAME,
-    to: "brian@nieuwenhuijzen.net",
+    to: inputFormEmail,
     subject: "subject",
     text: "test text",
     html: "<b> Test </b> <br> <b> Message sent with nodemailer </b>"
