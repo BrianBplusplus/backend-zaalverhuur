@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const nodemailer = require("nodemailer")
+const nodemailer = require("nodemailer");
 const axios = require("axios");
 const qs = require("qs");
 const path = require("path");
@@ -13,11 +13,14 @@ let fetchSingleLocation = 0;
 // ----- API Fetching ----- //
 router.get("/api", async (request, response, next) => {
   try {
-    const ovaticLocations = await axios.get(process.env.EXTERNAL_URL + "/locations/", {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
+    const ovaticLocations = await axios.get(
+      process.env.EXTERNAL_URL + "/locations/",
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
     console.log("// ---- Fetch all locations accessed ---- //");
     fetchAllLocations++;
     console.log(
@@ -25,9 +28,9 @@ router.get("/api", async (request, response, next) => {
     );
 
     //Filtering out all the excess locations. TODO: Find a better filter setup.
-    const filteredOvaticLocations = ovaticLocations.data.locations.filter(
-      (location) => location.locationID <= 1371
-    );
+    const filteredOvaticLocations = ovaticLocations.data.locations;
+
+    console.log(filteredOvaticLocations);
 
     return response.status(200).send(filteredOvaticLocations);
   } catch (error) {
@@ -46,12 +49,15 @@ router.get("/api/:id", async (request, response, next) => {
       }
     );
 
-    const ovaticSeatplans = await axios.get(process.env.EXTERNAL_URL + "/seatplans/", {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        locationID: `${request.params.id}`,
-      },
-    });
+    const ovaticSeatplans = await axios.get(
+      process.env.EXTERNAL_URL + "/seatplans/",
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          locationID: `${request.params.id}`,
+        },
+      }
+    );
 
     const combinedResponse = {
       ...ovaticLocations.data,
