@@ -30,8 +30,6 @@ router.get("/api", async (request, response, next) => {
     //Filtering out all the excess locations. TODO: Find a better filter setup.
     const filteredOvaticLocations = ovaticLocations.data.locations;
 
-    console.log(filteredOvaticLocations);
-
     return response.status(200).send(filteredOvaticLocations);
   } catch (error) {
     return next(error);
