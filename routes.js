@@ -28,7 +28,11 @@ router.get("/api", async (request, response, next) => {
     );
 
     //Filtering out all the excess locations. TODO: Find a better filter setup.
-    const filteredOvaticLocations = ovaticLocations.data.locations;
+    const filteredOvaticLocations = ovaticLocations.data.locations.filter(
+      function (data) {
+        return data.description === "verhuurbaar";
+      }
+    );
 
     return response.status(200).send(filteredOvaticLocations);
   } catch (error) {
