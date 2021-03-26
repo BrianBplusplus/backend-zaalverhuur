@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "17813ba5aaaf0b5c185ffe57036d60c2",
+    "revision": "400c9b760ea3cb19bc735611a8290958",
     "url": "/index.html"
   },
   {
-    "revision": "fb3a19b11defed2adee5",
+    "revision": "2000d83e9491e2f1f3bf",
     "url": "/static/css/main.4ebb19d9.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/2.0aea79ef.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "fb3a19b11defed2adee5",
-    "url": "/static/js/main.849f1240.chunk.js"
+    "revision": "2000d83e9491e2f1f3bf",
+    "url": "/static/js/main.d36e1058.chunk.js"
   },
   {
     "revision": "efe044ba513113f070be",
@@ -26,6 +26,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "f9b627a20956707d0423a1d186e418bc",
     "url": "/static/media/HeaderImage.f9b627a2.webp"
+  },
+  {
+    "revision": "acf676da87c1c88ed945618b3f2a3c51",
+    "url": "/static/media/deBusinessLounge.acf676da.jpeg"
   },
   {
     "revision": "6a6149f228e454f2e9fe11c16dbc5dcf",
@@ -40,12 +44,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/hetNieuweLokaal.3e38d27a.webp"
   },
   {
-    "revision": "af38e661601c623435c737ed1750a314",
-    "url": "/static/media/hetNieuweLokaalMetSubZaal.af38e661.webp"
-  },
-  {
-    "revision": "d74b0fb7d841a1440be4e667cf1a45a6",
-    "url": "/static/media/hetNieuweLokaalMetTweeSubZalen.d74b0fb7.webp"
+    "revision": "0ede6fa183f4a9e8d1ffbeca58d5d1ff",
+    "url": "/static/media/hetNieuwePodium.0ede6fa1.jpeg"
   },
   {
     "revision": "a14b34909304f3429657eaf9c82d4d69",
