@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "400c9b760ea3cb19bc735611a8290958",
+    "revision": "9754dbf79c0e38ecfdd571b6a11d7a91",
     "url": "/index.html"
   },
   {
-    "revision": "2000d83e9491e2f1f3bf",
+    "revision": "b000c2e9f64518283f23",
     "url": "/static/css/main.4ebb19d9.chunk.css"
   },
   {
-    "revision": "2eccbf0cbd5141e1cea1",
-    "url": "/static/js/2.0aea79ef.chunk.js"
+    "revision": "8da8c63e5ff93d0c0854",
+    "url": "/static/js/2.f27b68ec.chunk.js"
   },
   {
     "revision": "2f0b178fdd378b725438d2210191759d",
-    "url": "/static/js/2.0aea79ef.chunk.js.LICENSE.txt"
+    "url": "/static/js/2.f27b68ec.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "2000d83e9491e2f1f3bf",
-    "url": "/static/js/main.d36e1058.chunk.js"
+    "revision": "b000c2e9f64518283f23",
+    "url": "/static/js/main.e60e0b0a.chunk.js"
   },
   {
     "revision": "efe044ba513113f070be",
@@ -50,6 +50,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "a14b34909304f3429657eaf9c82d4d69",
     "url": "/static/media/hetNieuwsCafe.a14b3490.webp"
+  },
+  {
+    "revision": "1ce878f6daba169fb0388ee591126a08",
+    "url": "/static/media/menuKaart.1ce878f6.pdf"
   },
   {
     "revision": "7151533d7d6c2154f1135f4b7bac318d",
